@@ -1,0 +1,40 @@
+using System;
+
+using System.Linq;
+
+using System.Collections.Generic;
+
+
+
+namespace HelloWold;
+
+
+
+public static class Program
+{
+    public static void Main()
+
+    {
+        string[] symptoms = new string[5];
+        string[] departments = new string[5];
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Enter symptom for patient {i + 1}: ");
+            symptoms[i] = Console.ReadLine().ToLower();
+
+            if (symptoms[i] == "fever" || symptoms[i] == "cough")
+                departments[i] = "General Medicine";
+            else if (symptoms[i] == "injury" || symptoms[i] == "burn")
+                departments[i] = "Emergency";
+            else
+                departments[i] = "Refer to Specialist";
+        }
+
+        Console.WriteLine("\nPatient Assignments:");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine($"Patient {i + 1} ({symptoms[i]}): {departments[i]}");
+        }
+    }
+}
