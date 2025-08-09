@@ -1,0 +1,39 @@
+using System;
+
+using System.Linq;
+
+using System.Collections.Generic;
+
+
+
+namespace HelloWold;
+
+
+
+public static class Program
+{
+    public static void Main()
+
+    {
+
+        int[] heights = new int[6];
+        int shortCount = 0, averageCount = 0, tallCount = 0;
+
+        for (int i = 0; i < 6; i++)
+        {
+            Console.Write($"Enter height in cm for person {i+1}: ");
+            while (!int.TryParse(Console.ReadLine(), out heights[i]))
+            {
+                Console.Write("Invalid input! Please enter an integer: ");
+            }
+
+            if (heights[i] < 150) shortCount++;
+            else if (heights[i] <= 170) averageCount++;
+            else tallCount++;
+        }
+
+        Console.WriteLine($"\nShort (<150cm): {shortCount}");
+        Console.WriteLine($"Average (150-170cm): {averageCount}");
+        Console.WriteLine($"Tall (>170cm): {tallCount}");
+    }
+}
