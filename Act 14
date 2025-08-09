@@ -1,0 +1,47 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main()
+    {
+
+        int studentCount = 5;
+        int subjectCount = 3;
+        int[,] grades = new int[studentCount, subjectCount];
+        int[] totals = new int[studentCount];
+        int[] ranks = new int[studentCount];
+
+        for (int i = 0; i < studentCount; i++)
+        {
+            Console.WriteLine($"\nEnter grades for Student {i+1}:");
+            for (int j = 0; j < subjectCount; j++)
+            {
+                Console.Write($"Subject {j+1}: ");
+                while (!int.TryParse(Console.ReadLine(), out grades[i,j]) || grades[i,j] < 0 || grades[i,j] > 100)
+                {
+                    Console.Write("Invalid grade (0-100)! Please enter again: ");
+                }
+                totals[i] += grades[i,j];
+            }
+        }
+
+        for (int i = 0; i < studentCount; i++)
+        {
+            ranks[i] = 1;
+            for (int j = 0; j < studentCount; j++)
+            {
+                if (totals[j] > totals[i]) ranks[i]++;
+            }
+        }
+
+        Console.WriteLine("\nStudent Results:");
+        for (int i = 0; i < studentCount; i++)
+        {
+            Console.WriteLine($"Student {i+1}: Total = {totals[i]}, Rank = {ranks[i]}");
+        }
+    }
+}
