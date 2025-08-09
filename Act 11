@@ -1,0 +1,45 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main()
+    {
+
+
+        string[] names = new string[10];
+        int[] ages = new int[10];
+        string[] categories = new string[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Enter name for citizen {i + 1}: ");
+            names[i] = Console.ReadLine();
+
+            Console.Write($"Enter age for {names[i]}: ");
+            while (!int.TryParse(Console.ReadLine(), out ages[i]) || ages[i] < 0 || ages[i] > 120)
+            {
+                Console.Write("Invalid age! Please enter age between 0-120: ");
+            }
+
+            if (ages[i] >= 18)
+            {
+                if (ages[i] <= 30) categories[i] = "Young Voter";
+                else if (ages[i] <= 59) categories[i] = "Mid-age Voter";
+                else categories[i] = "Senior Voter";
+            }
+            else
+            {
+                categories[i] = "Not eligible";
+            }
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine($"{names[i]}, {ages[i]}: {categories[i]}");
+        }
+    }
+}
