@@ -1,9 +1,13 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
-class Program
+namespace HelloWold;
+
+public static class Program
 {
-    static void Main()
-    {
+    public static void Main()
+    {    
         int[] winningNumbers = { 7, 13, 22, 42, 55, 77 };
         int[] userNumbers = new int[20];
         bool[] isWinner = new bool[20];
