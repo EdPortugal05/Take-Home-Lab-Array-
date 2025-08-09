@@ -1,0 +1,42 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main()
+    {
+
+        string[] candidates = { "Candidate A", "Candidate B", "Candidate C" };
+        int[] votes = new int[3];
+        string[] votesInput = new string[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Enter vote {i + 1} (A/B/C): ");
+            votesInput[i] = Console.ReadLine().ToUpper();
+
+            switch (votesInput[i])
+            {
+                case "A": votes[0]++; break;
+                case "B": votes[1]++; break;
+                case "C": votes[2]++; break;
+                default: Console.WriteLine("Invalid vote!"); break;
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine($"{candidates[i]}: {votes[i]} votes");
+        }
+
+        int max = 0;
+        for (int i = 1; i < 3; i++)
+        {
+            if (votes[i] > votes[max]) max = i;
+        }
+        Console.WriteLine($"Winner: {candidates[max]}");
+    }
+}
