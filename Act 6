@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main()
+    {
+       
+        float[] celsius = new float[5];
+        float[] fahrenheit = new float[5];
+        string[] category = new string[5];
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Enter temperature in Celsius {i+1}: ");
+            while (!float.TryParse(Console.ReadLine(), out celsius[i]))
+            {
+                Console.Write("Invalid input! Please enter a number: ");
+            }
+
+            fahrenheit[i] = celsius[i] * 9 / 5 + 32;
+
+            if (celsius[i] < 15) category[i] = "Cold";
+            else if (celsius[i] <= 30) category[i] = "Warm";
+            else category[i] = "Hot";
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine($"{celsius[i]}°C = {fahrenheit[i]}°F - {category[i]}");
+        }
+    }
+}
