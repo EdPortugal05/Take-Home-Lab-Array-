@@ -1,0 +1,48 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main()
+
+    {
+        
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+
+        for (int i = 3; i * i <= num; i += 2)
+        {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
+    static void Main()
+    {
+        int[] numbers = new int[8];
+
+        Console.WriteLine("Enter 8 whole numbers:");
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"Number {i+1}: ");
+            while (!int.TryParse(Console.ReadLine(), out numbers[i]))
+            {
+                Console.Write("Invalid input! Please enter a whole number: ");
+            }
+        }
+
+        Console.WriteLine("\nNumber Analysis:");
+        foreach (int num in numbers)
+        {
+            string binary = Convert.ToString(num, 2);
+            Console.WriteLine($"{num}:");
+            Console.WriteLine($"- Prime: {IsPrime(num)}");
+            Console.WriteLine($"- Binary: {binary}");
+            Console.WriteLine($"- Even/Odd: {(num % 2 == 0 ? "Even" : "Odd")}\n");
+        }
+    }
+}
